@@ -1,0 +1,22 @@
+<br>
+<div class="mb-5">
+<div class="d-inline p-2">Login as :- <%= @session %> </div>
+<div class="d-inline p-2" style="margin-left:900px;">
+
+<%= link_to "Logout", admin_log_out_path %>
+
+</div>
+</div>
+
+
+<div class="container row m-auto g-auto align-items-center">
+<div>
+<%= link_to "Add Product", products_path,class:"btn btn-light" %>
+</div>
+<div>
+<%= link_to "Add Item", items_path,class:"btn btn-light" %>
+</div>
+<div>
+<%= link_to "Order History", admin_order_history_path,class:"btn btn-light" %>
+</div>
+</div>

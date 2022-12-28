@@ -1,0 +1,43 @@
+
+<div class="container row m-auto g-auto align-items-center">
+<div class="m-3">
+<h1 class="mb-5">Admin Login</h1>
+</div>
+
+
+
+
+
+<%= form_with url:"admin_login", method: :post, local: true do |form| %>
+  
+  <div class="form-outline mb-4">
+  <%= form.label :username ,"Username",class:"form-label"%> 
+    <%= form.text_field :username, class: "form-control" %>
+  
+  </div>
+
+ 
+  <div class="form-outline mb-4">
+   
+    <%= form.label :password,class: "form-label"  %> 
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+
+  <!-- 2 column grid layout for inline styling -->
+  <div class="row mb-4">
+    <div class="col d-flex justify-content-center">
+  
+
+  
+  
+  <%= form.submit "Login", class: "btn btn-primary btn-block mb-4" %>
+
+
+  </div>
+  <% end %>
+  </div>
+  <%= link_to "Home", root_path %>
+
+  
+
+

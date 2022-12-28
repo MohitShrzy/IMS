@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="/jquery/jquery.js"></script>-->
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+$("#item_id").prop("disabled", true); // second dropdown is disable while first dropdown is empty
+console.log("atleast loaded")
+$(document).ready(function(){
+
+
+  $("#product_id").change(function(){
+    
+    console.log("change function called")
+  	var product = $(this).val();
+  	if(product == ''){
+  		$("#item_id").prop("disabled", true);
+  	}else{
+  		$("#item_id").prop("disabled", false);
+  	}
+  	$.ajax({
+	    url: "user_home",
+	    method: "GET",  
+	    dataType: "json",
+	    data: {product: product},
+	    error: function (xhr, status, error) {
+            console.log("error called")
+	      	console.error('AJAX Error: ' + status + error);
+	    },
+	    success: function (response) {
+	      	console.log(response);
+            console.log("success function called")
+	      	var item = response["item"];
+	      	$("#item_id").empty();
+            console.log("function called after item_id", item)
+	      	$("#item_id").append('<option>Select Item</option>');
+	      	for(var i = 0; i < item.length; i++){
+                console.log(i, " ", item[i]["id"]);
+	      		$("#item_id").append('<option value="' + item[i]["id"] + '">' +item[i]["item_name"] + '</option>');
+	      	}
+	    }
+  	});
+
+
+  });
+});
+ 
+</script>
+
+
+<div class="mb-5">
+<div class="d-inline p-2" style="margin-left:900px;">
+
+<%= link_to "Logout", user_log_out_path %>
+
+</div>
+<div class="d-inline p-2"><h2>Order Page</h2></div>
+</div>
+
+<%= form_with xml: @item, url: cart_path, local: true do |form| %>
+   <%= form.hidden_field :user_email,value: @session %>
+  
+    <div class="field form-outline mb-4">
+    <%= form.label :product_id %>
+    <%= form.select(:product_id, Product.all.collect {|p| [p.product_name, p.id]},  {class: 'form-control'}) %>
+    </div>
+    <div class="field form-outline mb-4">
+    <%= form.label :item_id %>
+    <%= form.select(:item_id, Item.all.collect {|p| [p.item_name, p.id]},  {class: 'form-control'}) %> 
+    </div>
+    <div class="field form-outline mb-4">
+    <%= form.label :quantity %> 
+    <%= form.number_field :quantity,  min: 1 %>
+   
+    </div>
+    <div class="actions">
+    <%= form.submit "BUY" ,class: "btn btn-primary btn-block mb-4" %>
+  </div>
+<% end %>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+

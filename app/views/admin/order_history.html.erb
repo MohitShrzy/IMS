@@ -1,0 +1,22 @@
+<div class="table-responsive">
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Oder_Id</th>
+      <th>User Email</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.each do |o| %>
+      <tr>
+        <td><%= o.id %></td>
+        <td><%= o.items.item_name %></td> 
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<div>
+<%= link_to "Home", admin_home_path %>
+</div>

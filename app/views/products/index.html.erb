@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+
+
+
+<br>
+
+
+<div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              
+              <th colspan="3">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @products.each do |product| %>
+              <tr>
+                <td><%= product.id %></td>
+                <td><%= product.product_name %></td>
+               
+                <td><button type="button" class="btn btn-info"><%= link_to 'Show', product %></button></td>
+                <td><button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_product_path(product) %></button></td>
+                <td><button type="button" class="btn btn-danger"><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <%= link_to 'New Product', new_product_path %>
+      <%= link_to 'Home', admin_home_path %>
