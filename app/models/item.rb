@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
   belongs_to :product
-  belongs_to :order
+  has_many :orders
   
 end

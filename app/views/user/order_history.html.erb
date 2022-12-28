@@ -3,12 +3,9 @@
   <thead>
     <tr>
       <th>Oder_Id</th>
-      <th>User Email</th>
       <th>Product</th>
       <th>Item</th>
-      <th>Qauntity</th>
-      
-
+      <th>Quantity</th>
       
     </tr>
   </thead>
@@ -16,7 +13,6 @@
     <% @order.each do |o| %>
       <tr>
         <td><%= o.id %></td>
-        <td><%= o.user_email %></td> 
         <td><%= o.product.product_name %></td> 
         <td><%= o.item.item_name %></td> 
         <td><%= o.quantity %></td> 
