@@ -11,15 +11,44 @@
 </head>
 
   <body>
-<div class="container">
-
   <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
 <% end %>
 <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
-    <%= yield %>
+  <div id="wrapper">
+  <div id="content">
+    <div id="header">
+      <div id="logo">
+        <h1 style="font-size: 100px;">IMS</h1>
+        
+      </div>
+      <div id="links">
+        <ul>
+          
+        </ul>
+      </div>
     </div>
+    <div id="mainimg">
+      <h3>inventions</h3>
+      <h4>for a wireless world</h4>
+    </div>
+    
+     
+      <%= yield %>
+     
+      
+   
+<div class="container">
+
+
+
+
+
+    </div>
+    
+    
+    
   </body>
 </html>
