@@ -38,6 +38,9 @@ class UserController < ApplicationController
   end
                    
   def home
+    @session=session[:user] 
+  end
+  def add_product
     @item=Item.all
     @session=session[:user]
     
@@ -55,6 +58,17 @@ class UserController < ApplicationController
           }
       end
     end
+  end
+
+
+  def user_order_history
+    email=params[:session]
+  
+    @orders = Order.where(user_email: email)
+    p @orders
+    p"--------------------------find---------------"
+
+    
   end
 
   def logout
